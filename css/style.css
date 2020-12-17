@@ -7583,6 +7583,11 @@ h1, h2, h3, h4, h5,
       @media (max-width: 1199.98px) {
         .owl-carousel.home-slider .slider-item {
           background-position: center center !important; } }
+      @media (max-width: 500px) {
+        .owl-carousel.home-slider{
+          display: none;
+        }
+      }
       .owl-carousel.home-slider .slider-item .overlay {
         position: absolute;
         top: 0;
