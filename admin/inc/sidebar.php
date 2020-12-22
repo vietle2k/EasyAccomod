@@ -5,7 +5,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Team Bauet
+                    Team WEB
                 </a>
             </div>
 
@@ -25,7 +25,7 @@
                 <li>
                     <a href="alltenant.php">
                         <i class="ti-user"></i>
-                        <p>Tenants</p>
+                        <p>Renter</p>
                     </a>
                 </li>
                 <li>
@@ -35,9 +35,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="about.php">
+                    <a href="allpost.php">
                         <i class="ti-user"></i>
-                        <p>About Page</p>
+                        <p>About Post</p>
                     </a>
                 </li>
                 <li>
