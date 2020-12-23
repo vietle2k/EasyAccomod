@@ -4,7 +4,7 @@
 	include 'inc/sidebar.php';
  ?>
  <?php
- if (isset($_POST['logout'])) {
+ if (isset($_POST['Logout'])) {
    Session::sessionDestroyadmin();
  }
   ?>

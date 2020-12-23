@@ -274,7 +274,7 @@ hr {
 
 .sidebar .sidebar-wrapper {
     position: relative;
-    overflow: auto;
+    overflow: hidden;
     width: 260px;
     z-index: 4;
     height: 100vh;
@@ -302,7 +302,7 @@ hr {
 
 .sidebar .logo,
 .off-canvas-sidebar .logo {
-    padding: 18px 0px;
+    padding: 0px 0px;
     margin: 0 20px;
 }
 
@@ -417,7 +417,7 @@ hr {
 .sidebar .logo, .sidebar[data-background-color="white"] .logo,
 .off-canvas-sidebar .logo,
 .off-canvas-sidebar[data-background-color="white"] .logo {
-    border-bottom: 1px solid rgba(102, 97, 91, 0.3);
+    border-bottom: 1px hidden rgba(102, 97, 91, 0.3);
 }
 
 .sidebar .logo p, .sidebar[data-background-color="white"] .logo p,

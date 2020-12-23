@@ -12,6 +12,9 @@
 <?php
   $owner = new Tenant();
   $alluser = $owner->alltenant();
+  if (isset($_POST['delete'])) {
+    $owner->deleteOwner($_POST['delete']);
+  }
  ?>
 
   <div class="content">
@@ -24,8 +27,9 @@
                     <th>Serial</th>
                     <th>Name</th>
                     <th>Gmail</th>
-                    <th>address</th>
+                    <!-- <th>address</th> -->
                     <th>View</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,8 +43,14 @@
                     <td><?php echo $i; ?></td>
                     <td><?php echo $user['fullname']; ?></td>
                     <td><?php echo $user['email']; ?></td>
-                    <td style="padding-left:75px;"><?php echo $user['address']; ?></td>
+                    <!-- <td style="padding-left:75px;"><?php echo $user['address']; ?></td> -->
                     <td> <a class="btn btn-info" href="tenantdetails.php?id=<?php echo $user['id']; ?>" >view</a> </td>
+                    <td>
+                    <form class="" action="alltenant.php" method="post">
+							          <input type="hidden" name="delete" value="<?php echo $user['id']; ?>">
+                        <input class="btn btn-danger" type="submit" name="del" value="Delete">
+                      </form>
+                    </td>
                 </tr>
               <?php } }else{ echo "<p>There is no user!</p>"; } ?>
             </tbody>

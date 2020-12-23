@@ -4,14 +4,14 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Team WEB
+                <a href="./" class="simple-text">
+                    <img src="https://logos.textgiraffe.com/logos/logo-name/Admin-designstyle-kiddo-m.png" alt="" width="100%" >
                 </a>
             </div>
 
             <ul class="nav">
                 <li class="active">
-                    <a href="index.php">
+                    <a href="./">
                         <i class="ti-layout-grid2"></i>
                         <p>Home</p>
                     </a>
@@ -25,7 +25,7 @@
                 <li>
                     <a href="alltenant.php">
                         <i class="ti-user"></i>
-                        <p>Renter</p>
+                        <p>Renters</p>
                     </a>
                 </li>
                 <li>
@@ -37,21 +37,21 @@
                 <li>
                     <a href="allpost.php">
                         <i class="ti-user"></i>
-                        <p>About Post</p>
+                        <p>Accept Post</p>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="cover.php">
                         <i class="ti-user"></i>
                         <p>Cover Image</p>
                     </a>
-                </li>
-                <!-- <li>
-                    <a href="allhouse.php">
-                        <i class="ti-user"></i>
-                        <p>All House List</p>
-                    </a>
                 </li> -->
+                <li>
+                    <a href="accountCheck.php">
+                        <i class="ti-user"></i>
+                        <p>Check Account</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>

@@ -33,9 +33,14 @@
               <td><?php echo $singleuser['fullname'] ?></td>
             </tr>
             <tr>
+              <td>Gender:</td>
+              <td><?php echo $singleuser['gender']; ?></td>
+            </tr>
+            <tr>
               <td>Number of House:</td>
               <td><?php echo $singleuser['house_number']; ?></td>
             </tr>
+            
             <tr>
               <td>email:</td>
               <td><?php echo $singleuser['email']; ?></td>
@@ -48,15 +53,15 @@
               <td>phone:</td>
               <td><?php echo $singleuser['phone']; ?></td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td>National ID:</td>
               <td><?php echo $singleuser['nid']; ?></td>
-            </tr>
+            </tr> -->
           </table>
           <div class="action_btn">
-            <form style="display:inline-block;" class="" action="ownerdetails.php?id=<?php echo $user['id']; ?>" method="post">
+            <!-- <form style="display:inline-block;" class="" action="ownerdetails.php?id=<?php echo $user['id']; ?>" method="post">
               <input type="submit" name="delete" class="btn btn-danger" value="delete">
-            </form>
+            </form> -->
             <a href="allowner.php" class="btn btn-default">Back</a>
           </div>
         </div>

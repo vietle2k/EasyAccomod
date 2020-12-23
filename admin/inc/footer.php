@@ -4,10 +4,10 @@
             <ul>
 
                 <li>
-                    <a href="http://www.creative-tim.com">
-                        Creative Tim
+                    <a href="#">
+                    &copy; <script>document.write(new Date().getFullYear())</script>,Project made with Team
                     </a>
-                </li>
+                <!-- </li>
                 <li>
                     <a href="http://blog.creative-tim.com">
                        Blog
@@ -17,11 +17,11 @@
                     <a href="http://www.creative-tim.com/license">
                         Licenses
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
-        <div class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-        </div>
+        <!-- <div class="copyright pull-right">
+            &copy; <script>document.write(new Date().getFullYear())</script>,Project made with Team
+        </div> -->
     </div>
 </footer>

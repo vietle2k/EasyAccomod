@@ -14,7 +14,7 @@
   if(isset($_GET['id'])){
     $singleuser = $tenant->singletenant($_GET['id']);
   }
-  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])){
+  if( isset($_POST['delete'])){
     $del = $tenant->deltenant($_GET['id']);
   }
 
@@ -33,6 +33,10 @@
               <td><?php echo $singleuser['fullname']; ?></td>
             </tr>
             <tr>
+              <td>Gender:</td>
+              <td><?php echo $singleuser['gender']; ?></td>
+            </tr>
+            <tr>
               <td>email:</td>
               <td><?php echo $singleuser['email']; ?></td>
             </tr>
@@ -44,16 +48,14 @@
               <td>phone:</td>
               <td><?php echo $singleuser['phone']; ?></td>
             </tr>
-            <tr>
-              <td>National ID:</td>
-              <td><?php echo $singleuser['nid']; ?></td>
-            </tr>
+            
           </table>
           <div class="action_btn">
-            <form style="display:inline-block;" class="" action="ownerdetails.php?id=<?php echo $user['id']; ?>" method="post">
+            <!-- <form style="display:inline-block;" class="" action="ownerdetails.php?id=<?php echo $user['id']; ?>" method="post">
+            <input type="hidden" name="delete" value="<?php echo $user['id']; ?>">
               <input type="submit" name="delete" class="btn btn-danger" value="delete">
-            </form>
-            <a href="allowner.php" class="btn btn-default">Back</a>
+            </form> -->
+            <a href="alltenant.php" class="btn btn-default">Back</a>
           </div>
         </div>
       </div>

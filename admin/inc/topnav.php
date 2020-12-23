@@ -8,7 +8,7 @@
                 <span class="icon-bar bar2"></span>
                 <span class="icon-bar bar3"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Dashboard</a>
+            <a class="navbar-brand" href="index.php"></a>
         </div>
 
 <?php
@@ -47,7 +47,7 @@ $msgcount = $obj->countmsg();
                       <ul class="dropdown-menu">
                         <li>
                           <form class="text-center" action="index.php" method="post">
-                          <input style="border:none;" class="btn" type="submit" name="logout" value="logout">
+                          <input style="border:none;" class="btn" type="submit" name="Logout" value="Logout">
                           </form>
                         </li>
                       </ul>

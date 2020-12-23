@@ -9,7 +9,7 @@ Session::init();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+	<title>Team WEB ESAYACCOMOD</title>
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 </head>
 <style>
@@ -34,7 +34,7 @@ Session::init();
     height: 100%;
   }
   body{
-    background-color: lightgray;
+    background-color: lightcyan;
   }
   .login_main{
     padding-top: 20px;
@@ -70,11 +70,11 @@ Session::init();
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
           <div class="house_image">
-            <img src="../assets/images/loginhouse.png" alt="">
+            <img src="../assets/images/login1.jpeg" alt="" width="100%">
           </div>
           <div class="main_input">
             <input type="text" name="username" class="form-control" value="" placeholder="Username">
-            <input type="text" name="password" class="form-control" value="" placeholder="Password">
+            <input type="password" name="password" class="form-control" value="" placeholder="Password">
             <p class="text-center"><input type="submit" class="btn btn-success" name="login" class="from-control" value="Login"></p>
           </div>
         </form>

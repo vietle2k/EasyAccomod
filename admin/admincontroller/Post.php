@@ -27,7 +27,7 @@ class Post extends Admincontroller
       return false;
     }
   }
-  public function updatepost($id)
+  public function acceptPost($id)
   {
     $sql = "UPDATE `post` SET `active_status` = 'active' where `post`.`id_post`=:id";
     $query = $this->db->link->prepare($sql);
@@ -40,6 +40,34 @@ class Post extends Admincontroller
     $sql = "delete from post where id_post=:id";
     $query = $this->db->link->prepare($sql);
     $query->bindValue(':id',$id);
+    $query->execute();
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+  public function declinePost($id)
+  {
+    $sql = "UPDATE `post` SET `active_status` = 'decline' WHERE `id_post` = :id";
+    $query = $this->db->link->prepare($sql);
+    $query->bindValue(':id',$id);
+    $query->execute();
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+  public function declineNotification($id)
+  {
+    $message = 'Your Post is Decline.' ;
+    $sql = "INSERT INTO `notification` (`id`, `from_id`, `to_id`, `message`, `read_message`, `time`) VALUES (NULL, '1', :id, 'Your Post is Decline.', 'no', current_timestamp());";
+    $query = $this->db->link->prepare($sql);
+    $query->bindValue(':id',$id);
+    $query->bindValue(':mess',$message);
+    $query->execute();
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+  public function acceptNotification($id)
+  {
+    $message = 'Your Post is Accept.' ;
+    $sql = "INSERT INTO `notification` (`id`, `from_id`, `to_id`, `message`, `read_message`, `time`) VALUES (NULL, '1', :id, :mess, 'no', current_timestamp());";
+    $query = $this->db->link->prepare($sql);
+    $query->bindValue(':id',$id);
+    $query->bindValue(':mess',$message);
     $query->execute();
     echo "<meta http-equiv='refresh' content='0'>";
   }

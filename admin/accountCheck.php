@@ -6,14 +6,14 @@
 <div class="main-panel">
 <?php
 	include 'inc/topnav.php';
-	include_once 'admincontroller/Owner.php';
+	include_once 'admincontroller/Alluser.php';
 ?>
 
 <?php
-  $owner = new Owner();
+  $owner = new Alluser();
   $alluser = $owner->allowner();
-  if (isset($_POST['delete'])) {
-    $owner->deleteOwner($_POST['delete']);
+  if (isset($_POST['id'])) {
+    $owner->updateActive($_POST['id']);
   }
  ?>
 
@@ -28,8 +28,7 @@
                     <th>Name</th>
                     <th>Gmail</th>
                     <!-- <th>Number of House</th> -->
-                    <th>View</th>
-                    <th>Delete</th>
+                    <th>Active</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,16 +40,15 @@
                ?>
                 <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $user['fullname']; ?></td>
+                    <td><?php echo $user['fullname'] ?></td>
                     <td><?php echo $user['email']; ?></td>
                     <!-- <td style="padding-left:75px;"></td> -->
-                    <td> <a class="btn btn-info" href="ownerdetails.php?id=<?php echo $user['id']; ?>" >view</a> </td>
-                    <td>
-                    <form class="" action="allowner.php" method="post">
-							          <input type="hidden" name="delete" value="<?php echo $user['id']; ?>">
-                        <input class="btn btn-danger" type="submit" name="del" value="Delete">
+                    <td>  
+                    <form class="" action="accountCheck.php" method="post">
+												<input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                        <input class="btn btn-danger" type="submit" name="delmsg" value="Active">
                       </form>
-                    </td>
+                  </td>
                 </tr>
               <?php } }else{ echo "<p>There is no user!</p>"; } ?>
             </tbody>

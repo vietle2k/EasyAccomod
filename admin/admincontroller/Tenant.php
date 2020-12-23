@@ -47,7 +47,19 @@ class Tenant extends Admincontroller
     $query->bindValue(':id',$id);
     $query->execute();
     Header('Location:alltenant.php');
+    // echo "<meta http-equiv='refresh' content='0'>";
   }
+
+  public function deleteOwner($id)
+  {
+    $sql = "delete from user where id=:id";
+    $query = $this->db->link->prepare($sql);
+    $query->bindValue(':id',$id);
+    $query->execute();
+    // Header('Location:alltenant.php');
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+
   public function delmessage($id)
   {
     $sql = "delete from tbl_message where id=:id";

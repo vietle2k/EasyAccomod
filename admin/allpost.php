@@ -13,10 +13,13 @@
   $post = new Post();
   $alluser = $post->allpost();
   if (isset($_POST['id_post'])) {
-    $post->updatepost($_POST['id_post']);
+    $post->acceptPost($_POST['id_post']);
+    $post->acceptNotification($_POST['id_post']);
   }
   if (isset($_POST['id_del'])) {
-    $post->delpost($_POST['id_del']);
+    $post->declinePost($_POST['id_del']);
+    $post->declineNotification($_POST['id_post']);
+
   }
  ?>
 
@@ -59,7 +62,7 @@
                     <td>
                       <form class="" action="allpost.php" method="post">
 							<input type="hidden" name="id_del" value="<?php echo $user['id_post']; ?>">
-                        <input class="btn btn-danger" type="submit" name="del" value="Delete">
+                        <input class="btn btn-danger" type="submit" name="del" value="Decline">
                       </form>
                     </td>
                 </tr>

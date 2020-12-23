@@ -1,6 +1,6 @@
 <?php
 include_once 'admincontroller/Admincontroller.php';
-class Owner extends Admincontroller
+class Alluser extends Admincontroller
 {
 
   function __construct()
@@ -10,14 +10,16 @@ class Owner extends Admincontroller
 
   public function allowner()
   {
-    $usertype = 'owner';
+    // $usertype = 'owner';
     // $sql = "SELECT tbl_user.*, count(tbl_house.id) AS house_number FROM tbl_user FULL JOIN tbl_house ON tbl_user.id = tbl_house.owner_id WHERE tbl_user.user = :user";
     // $query = $this->db->link->prepare($sql);
     // $query->bindValue(':user',$usertype);
     // $query->execute();
-    $sql = "SELECT user.* from user where user_type = :user";
+    $sql = "SELECT * from user where isActive = :active and user_type = :user_type";
     $query = $this->db->link->prepare($sql);
-    $query->bindValue(':user',$usertype);
+    // $query->bindValue();
+    $query->bindValue(':active',0);
+    $query->bindValue(':user_type','owner');
     $query->execute();
     // $query->debugDumpParams();
     $result = $query->fetchAll();
@@ -31,7 +33,7 @@ class Owner extends Admincontroller
 
   public function singleowner($id)
   {
-    $sql = "SELECT user.*, count(post.id_post) AS house_number FROM user LEFT JOIN post ON user.id = post.owner_id WHERE user.id = :id";
+    $sql = "SELECT tbl_user.*, count(tbl_house.id) AS house_number FROM tbl_user LEFT JOIN tbl_house ON tbl_user.id = tbl_house.owner_id WHERE tbl_user.id = :id";
     $query = $this->db->link->prepare($sql);
     $query->bindValue(':id',$id);
     $query->execute();
@@ -44,23 +46,22 @@ class Owner extends Admincontroller
       return false;
     }
   }
-
   public function delowner($id)
   {
-    $sql = "delete from user where id=':id'";
+    $sql = "DELETE FROM tbl_user WHERE id=:id";
     $query = $this->db->link->prepare($sql);
     $query->bindValue(':id',$id);
     $query->execute();
-    Header('Location:allowner.php');
-  }
+    Header('Location: allowner.php');
+    echo "<meta http-equiv='refresh' content='0'>";
 
-  public function deleteOwner($id)
+  }
+  public function updateActive($id)
   {
-    $sql = "delete from user where id= :id";
+    $sql = "UPDATE `user` SET `isActive` = '1' WHERE `user`.`id`=:id";
     $query = $this->db->link->prepare($sql);
     $query->bindValue(':id',$id);
     $query->execute();
-    // Header('Location:allowner.php');
     echo "<meta http-equiv='refresh' content='0'>";
   }
 
