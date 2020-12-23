@@ -10,7 +10,7 @@
 
     public function gethomeDetails(){
       $active = 'active';
-      $sql = 'select * from post where active_status=:active order by id_post DESC';
+      $sql = 'select * from post where active_status=:active_status order by id_post DESC';
       $query = $this->db->link->prepare($sql);
       $query->bindValue(':active_status',$active);
       $query->execute();
@@ -88,7 +88,7 @@
       $query->bindValue(':owner_id',$ownerid);
       $insert = $query->execute();
       if($insert){
-        $msg = 'You got a rent request for this <a href="housedetails.php?house_id='.$houseid.'">home</a> from a tenant!';
+        $msg = 'You got a rent request for this <a href="housedetails.php?house_id='.$houseid.'">home</a> from a renter!';
         $sql = "insert into notification(from_id,to_id,message) values(:from_id,:to_id,:message)";
         $query = $this->db->link->prepare($sql);
         $query->bindValue(':from_id',$renterid);
@@ -218,11 +218,11 @@
 
     public function acceptrequest($houseid,$renter_id)
     {
-      $act_st = 'active';
-      $sql = "update post set renter_id=:renter_id,active_status=:active_status  where id_post=:house_id";
+      //$act_st = 'active';
+      $sql = "update post set renter_id=:renter_id where id_post=:house_id";
       $query = $this->db->link->prepare($sql);
       $query->bindValue(':renter_id',$renter_id);
-      $query->bindValue(':active_status',$act_st);
+      //$query->bindValue(':active_status',$act_st);
       $query->bindValue(':house_id',$houseid);
 
       $query->execute();
@@ -266,12 +266,13 @@
     }
 
     public function deletehouse($ids,$ownerid){
-      echo 'This is test = '.$ids.' '.$ownerid;
+      //echo 'This is test = '.$ids.' '.$ownerid;
       $sql = "delete from post where id_post =:id";
       $query = $this->db->link->prepare($sql);
       $query->bindValue(':id',$ids);
       $query->execute();
-      Header("location:http://localhost/houserent/owner_profile.php?id=".$ownerid);
+      //Header("location:http://localhost/web/owner_profile.php?id=".$ownerid);
+      echo "<script type='text/javascript'>window.top.location='owner_profile.php?id=.$ownerid';</script>"; exit;
     }
 
   }

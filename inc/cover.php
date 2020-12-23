@@ -1,12 +1,20 @@
+<?php
+  include 'Controller/Homecontroller.php';
+  $home = new Homecontroller();
+  $data = $home->gethomeDetails();
+  if(!$data){
+    echo "<p>No data found</p>";
+  }
+?>
+
 <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image:url(images/background_1.jpg);">
         <div class="overlay"></div>
         <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-md-12">
-              <div class="mb-5 text-center">
-                <!-- <h1 class="text-white font-weight-bold">Hello1</h1> -->
-              </div>
+          <div class="row align-items-center justify-content-center slider-text">
+
+            <div class="col-md-12 text-center">
+              <h1 class="mb-5 bread font-weight-bold" style="font-size: 50px; color: white;">Find Your Dream House</h1>
             </div>
           </div>
         </div>
@@ -16,11 +24,10 @@
       <div class="slider-item" style="background-image:url(images/background_2.jpg);">
         <div class="overlay"></div>
         <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-md-12">
-              <div class="mb-5 text-center">
-                <!-- <h1 class="text-white font-weight-bold">Hello2</h1> -->
-              </div>
+          <div class="row align-items-center justify-content-center slider-text">
+            
+            <div class="col-md-12 text-center">
+              <h1 class="mb-5 bread font-weight-bold" style="font-size: 50px; color: white;">Become Our Member Today</h1>
             </div>
           </div>   
         </div>
@@ -28,6 +35,7 @@
       </div>
 </section>
 
+<!--
 <section class="ftco-search">
       <div class="container">
         <div class="row">
@@ -209,7 +217,9 @@
         </div>
       </div>
 </section>
+-->
 
+<!--
 <section class="ftco-section ftco-properties">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
@@ -221,222 +231,47 @@
         <div class="row">
           <div class="col-md-12">
             <div class="properties-slider owl-carousel ftco-animate">
-              <div class="item">
-                <div class="properties">
-                  <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/properties-1.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-search2"></span>
-                    </div>
-                  </a>
-                  <div class="text p-3">
-                    <span class="status sale">Sale</span>
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="#">North Parchmore Street</a></h3>
-                        <p>Apartment</p>
-                      </div>
-                      <div class="two">
-                        <span class="price">$20,000</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="properties">
-                  <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/properties-2.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-search2"></span>
-                    </div>
-                  </a>
-                  <div class="text p-3">
-                    <div class="d-flex">
-                      <span class="status rent">Rent</span>
-                      <div class="one">
-                        <h3><a href="#">North Parchmore Street</a></h3>
-                        <p>Apartment</p>
-                      </div>
-                      <div class="two">
-                        <span class="price">$2,000 <small>/ month</small></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="properties">
-                  <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/properties-3.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-search2"></span>
-                    </div>
-                  </a>
-                  <div class="text p-3">
-                    <span class="status sale">Sale</span>
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="#">North Parchmore Street</a></h3>
-                        <p>Apartment</p>
-                      </div>
-                      <div class="two">
-                        <span class="price">$20,000</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="properties">
-                  <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/properties-4.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-search2"></span>
-                    </div>
-                  </a>
-                  <div class="text p-3">
-                    <span class="status sale">Sale</span>
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="#">North Parchmore Street</a></h3>
-                        <p>Apartment</p>
-                      </div>
-                      <div class="two">
-                        <span class="price">$20,000</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="properties">
-                  <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/properties-5.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-search2"></span>
-                    </div>
-                  </a>
-                  <div class="text p-3">
-                    <span class="status rent">Rent</span>
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="#">North Parchmore Street</a></h3>
-                        <p>Apartment</p>
-                      </div>
-                      <div class="two">
-                        <span class="price">$900 <small>/ month</small></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="properties">
-                  <a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/properties-6.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-search2"></span>
-                    </div>
-                  </a>
-                  <div class="text p-3">
-                    <span class="status sale">Sale</span>
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="#">North Parchmore Street</a></h3>
-                        <p>Apartment</p>
-                      </div>
-                      <div class="two">
-                        <span class="price">$20,000</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <?php 
+                foreach ($data as $value) { ?>                    
+                      <div class="item">
+                        <div class="properties">
+                          <?php 
+                            if (!$value['img_1']) {
+                              $image = 'assets/images/house/house29.png';
+                            }
+                            else {
+                              $image = $value['img_1'];  
+                            }
+                          ?>
+                          <a href="housedetails.php?house_id=<?php echo $value['id']; ?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?php echo $image; ?>);">
+                            <div class="icon d-flex justify-content-center align-items-center">
+                              <span class="icon-search2"></span>
+                            </div>
+                          </a>
+                          <div class="text p-3">
+                            <div class="d-flex">
+                              <div class="one">
+                                <h3><a href="housedetails.php?house_id=<?php echo $value['id']; ?>"><?php echo $value['address']; ?></a></h3>
+                                <p><?php echo $value['house_type']; ?></p>
+                              </div>
+                              <div class="two">
+                                <span class="price"><?php echo $value['price']; ?> VND</span>
+                              </div>
+                            </div>
+                            <hr>
+                            <p class="bottom-area d-flex">
+                              <span><i class="flaticon-selection"></i> <?php echo $value['dien_tich']; ?> m2</span>
+                              <span class="ml-auto"><i class="flaticon-bathtub"></i> <?php echo $value['bathroom']; ?></span>
+                              <span><i class="flaticon-bed"></i> <?php echo $value['bedroom']; ?></span>
+                            </p>
+                          </div>
+                        </div>  
+                      </div> 
+                <?php }
+              ?> 
             </div>
           </div>
         </div>
       </div>
 </section>
-
-<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);">
-      <div class="container">
-        <div class="row justify-content-center mb-3 pb-3">
-          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-            <h2 class="mb-4">Some fun facts</h2>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-10">
-            <div class="row">
-              <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                  <div class="text">
-                    <strong class="number" data-number="9000">0</strong>
-                    <span>Happy Customers</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                  <div class="text">
-                    <strong class="number" data-number="10000">0</strong>
-                    <span>Properties</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                  <div class="text">
-                    <strong class="number" data-number="1000">0</strong>
-                    <span>Agents</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                  <div class="text">
-                    <strong class="number" data-number="100">0</strong>
-                    <span>Awards</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-</section>
-
-
-<!--
-<div class="cover_area">
-  <div class="opacity"></div>
-  <div class="cover_main container">
-    <div class="cover_inner">
-      <div class="title">
-        <h1 class="text-center">Search The Best Home</h1>
-      </div>
-      <div class="search_area">
-        <div class="search_main">
-          <form class="search_cover" action="availablehouse.php" method="get">
-            <div class="address_cover">
-              <input type="text" name="address" class="form-control" value="" placeholder="Address">
-            </div>
-            <div class="rent_type">
-                <select class="form-control" style="background-color:lavender;" name="house_type">
-                <option value="" selected disabled>Rent Type</option>
-                <option value="Family">Family</option>
-                <option value="Bachelor">Bachelor</option>
-                <option value="Sublet">Sub-Let</option>
-                <option value="Mess/Hostel">Hostel/Mess</option>
-              </select>
-              </div>
-
-            <div id="range_cover">
-              <label for="input_range_cover">Price range:</label>
-              <input type="text" id="input_range_cover" name="rental_value" readonly style="border:0; color:#f6931f; font-weight:bold;">
-              <div id="main_range_cover" class="" title="Tap left or right button to set more precise value."></div>
-            </div>
-
-            <p class="text-center"><input type="submit" name="search_cover" class="btn btn-info" value="Search house"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 -->

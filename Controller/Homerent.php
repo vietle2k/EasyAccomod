@@ -14,10 +14,12 @@
     {
       $owner_id = Session::get('user_id');
       $address = $value['address'];
-      $road_no = $value['road_no'];
-      $house_no = $value['house_no'];
       $rental_value = $value['rental_value'];
-
+      $dien_tich = $value['dien_tich'];
+      $tien_dien = $value['tien_dien'];
+      $tien_nuoc = $value['tien_nuoc'];
+      $bathroom_nl = $value['bathroom_nl'];
+      $air_condition = $value['air_condition'];
 
       if(stripos($rental_value,'-') == true){
         $arr = explode('-',$value['rental_value']);
@@ -27,17 +29,15 @@
       }
 
       $house_type = $value['house_type'];
-      $floor = $value['floor'];
       $bedroom = $value['bedroom'];
-      $dinning_room = $value['dinning_room'];
       $bathroom = $value['bathroom'];
       $kitchen = $value['kitchen'];
       $balconies = $value['balconies'];
       $description = $value['description'];
-      $active_status = 1;
+      $active_status = 'inactive';
 
 
-      if($address == '' || $rental_value =='' || $house_type == ''){
+      if($address == '' || $rental_value =='' || $house_type == '' || $tien_dien =='' || $tien_nuoc =='' || $bathroom_nl =='' || $air_condition == '' || $bedroom == '' || $bathroom == '' || $kitchen == '' || $balconies == ''){
         return 'notfill';
       }
 
@@ -134,25 +134,26 @@
       }
 
 
-      $sql = "INSERT INTO tbl_house(owner_id,address,road_no,house_no,rental_value,house_type,floor,bedroom,dinning_room,bathroom,kitchen,balconies,description,img_1,img_2,img_3) VALUES(:owner_id,:address,:road_no,:house_no,:rental_value,:house_type,:floor,:bedroom,:dinning_room,:bathroom,:kitchen,:balconies,:description,:img_1,:img_2,:img_3)";
+      $sql = "INSERT INTO post(owner_id,address,house_type,price,dien_tich,bedroom,bathroom,bathroom_nl,kitchen,air_condition,balconies,tien_dien,tien_nuoc,description,img_1,img_2,img_3,active_status) VALUES(:owner_id,:address,:house_type,:rental_value,:dien_tich,:bedroom,:bathroom,:bathroom_nl,:kitchen,:air_condition,:balconies,:tien_dien,:tien_nuoc,:description,:img_1,:img_2,:img_3,:active_status)";
       $query = $this->db->link->prepare($sql);
       $query->bindValue(':owner_id',$owner_id);
       $query->bindValue(':address',$address);
-      $query->bindValue(':road_no',$road_no);
-      $query->bindValue(':house_no',$house_no);
-      $query->bindValue(':rental_value',$rental_value);
       $query->bindValue(':house_type',$house_type);
-      $query->bindValue(':floor',$floor);
+      $query->bindValue(':rental_value',$rental_value);
+      $query->bindValue(':dien_tich',$dien_tich);
       $query->bindValue(':bedroom',$bedroom);
-      $query->bindValue(':dinning_room',$dinning_room);
       $query->bindValue(':bathroom',$bathroom);
+      $query->bindValue(':bathroom_nl',$bathroom_nl);
       $query->bindValue(':kitchen',$kitchen);
-      $query->bindValue(':bathroom',$bathroom);
+      $query->bindValue(':air_condition',$air_condition);
       $query->bindValue(':balconies',$balconies);
+      $query->bindValue(':tien_dien',$tien_dien);
+      $query->bindValue(':tien_nuoc',$tien_nuoc);
       $query->bindValue(':description',$description);
       $query->bindValue(':img_1',$uploaded_image_1);
       $query->bindValue(':img_2',$uploaded_image_2);
       $query->bindValue(':img_3',$uploaded_image_3);
+      $query->bindValue(':active_status',$active_status);
       $result = $query->execute();
       if($result){
         return 'success';

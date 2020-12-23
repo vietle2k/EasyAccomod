@@ -123,7 +123,8 @@
                   Session::set('email',$result->email);
                   Session::set('lname',$result->lname);
                   Session::set('fname',$result->fname);
-                  Header('Location:index.php');
+                  //Header('Location:index.php');
+                  echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
                 }
                 else{
                   return 'nouser';

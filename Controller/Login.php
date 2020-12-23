@@ -21,7 +21,7 @@
           else{
             $password = md5($password);
 
-            $sql = "select * from tbl_user where email = :email and password = :password limit 1";
+            $sql = "select * from user where email = :email and password = :password limit 1";
             $query = $this->db->link->prepare($sql);
             $query->bindValue(':email',$email);
             $query->bindValue(':password',$password);
@@ -30,16 +30,17 @@
 
             if($result){
               Session::set('login',true);
-              Session::set('user',$result->user);
+              Session::set('user',$result->user_type);
               Session::set('user_id',$result->id);
               Session::set('email',$result->email);
-              Session::set('lname',$result->lname);
-              Session::set('fname',$result->fname);
+              Session::set('fullname',$result->fullname);
               if (Session::get('path')) {
-                Header('Location:'.Session::get('path'));
+                //Header('Location:'.Session::get('path'));
+                echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
               }
               else{
-                Header('Location:index.php');
+                //Header('Location:index.php');
+                echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
               }
             }
             else{
