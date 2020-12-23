@@ -6,16 +6,17 @@
 <div class="main-panel">
 <?php
 	include 'inc/topnav.php';
-	include_once 'admincontroller/Alluser.php';
+	include_once 'admincontroller/Owner.php';
 ?>
 
 <?php
-  $owner = new Alluser();
+  $owner = new Owner();
   $alluser = $owner->allowner();
-  if (isset($_POST['id'])) {
-    $owner->updateActive($_POST['id']);
-  }
+//   if (isset($_POST['delete'])) {
+//     $owner->deleteOwner($_POST['delete']);
+//   }
  ?>
+ 
 
   <div class="content">
     <div class="container-fluid">
@@ -28,8 +29,9 @@
                     <th>Name</th>
                     <th>Gmail</th>
                     <!-- <th>Number of House</th> -->
+                    <th>Status</th>
                     <th>View</th>
-                    <th>Active</th>
+                    <th>Chat</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,16 +43,16 @@
                ?>
                 <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $user['fullname'] ?></td>
+                    <td><?php echo $user['fullname']; ?></td>
                     <td><?php echo $user['email']; ?></td>
                     <!-- <td style="padding-left:75px;"></td> -->
+                    <!-- chat -->
+                    <td><?php  echo 'Offline' ?></td>
                     <td> <a class="btn btn-info" href="ownerdetails.php?id=<?php echo $user['id']; ?>" >view</a> </td>
                     <td>
-                    <form class="" action="accountCheck.php" method="post">
-												<input type="hidden" name="id" value="<?php echo $user['id']; ?>">
-                        <input class="btn btn-danger" type="submit" name="delmsg" value="Active">
-                      </form>
+                    <td><a href="Chat.php"> Start Chat</a></button>
                   </td>
+                    
                 </tr>
               <?php } }else{ echo "<p>There is no user!</p>"; } ?>
             </tbody>
@@ -59,7 +61,7 @@
       </div>
     </div>
   </div>
-
+  
  <?php
 	include 'inc/footer.php';
  ?>

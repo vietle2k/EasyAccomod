@@ -31,6 +31,11 @@
               Session::set('user_id',$result->id);
               Session::set('email',$result->email);
               Session::set('username',$result->username);
+              // this->detailLogin($result->id);
+              $sql2 = "INSERT INTO `login_details` (`login_details_id`, `user_id`, `last_activity`) VALUES (NULL, :id, current_timestamp())" ;
+              $query2 = $this->db->link->prepare($sql2);
+              $query2->bindValue(':id',$result->id);
+              $query2->execute();
               Header('Location:index.php');
             }
             else{
@@ -39,6 +44,12 @@
 
           }
 
+    }
+    public   function detailLogin($id){
+      $sql2 = "INSERT INTO `login_details` (`login_details_id`, `user_id`, `last_activity`) VALUES (NULL, :id, current_timestamp())" ;
+      $query2 = $this->db->link->prepare($sql2);
+      $query2->bindValue(':id',$id);
+      $query2->execute();
     }
   }
 

@@ -40,6 +40,12 @@
                         <p>Accept Post</p>
                     </a>
                 </li>
+                <li>
+                    <a href="resPost.php">
+                        <i class="ti-user"></i>
+                        <p>Restore Post</p>
+                    </a>
+                </li>
                 <!-- <li>
                     <a href="cover.php">
                         <i class="ti-user"></i>
@@ -50,6 +56,12 @@
                     <a href="accountCheck.php">
                         <i class="ti-user"></i>
                         <p>Check Account</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="chatOwners.php">
+                        <i class="ti-user"></i>
+                        <p>Chat Owners</p>
                     </a>
                 </li>
             </ul>

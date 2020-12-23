@@ -61,6 +61,7 @@ Session::init();
       echo "<p class='alert alert-danger'>No User Found!</p>";
       $msg = null;
     }
+    
     else if((isset($msg)) && ($msg=='empty')){
       echo "<p class='alert alert-danger'>Fill all the Field please!</p>";
       $msg = null;

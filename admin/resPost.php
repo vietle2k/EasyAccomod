@@ -11,14 +11,14 @@
 
 <?php
   $post = new Post();
-  $alluser = $post->allpost();
+  $alluser = $post->allPostDecline();
   if (isset($_POST['id_post'])) {
-    $post->acceptPost($_POST['id_post']);
-    $post->acceptNotification($_POST['id_post']);
+    $post->restorePost($_POST['id_post']);
+    $post->restoreNotification($_POST['id_post']);
   }
   if (isset($_POST['id_del'])) {
-    $post->declinePost($_POST['id_del']);
-    $post->declineNotification($_POST['id_del']);
+    $post->delpost($_POST['id_del']);
+    // $post->declineNotification($_POST['id_del']);
 
   }
  ?>
@@ -68,20 +68,22 @@
                     }
 
                     ?>
+                    
+                    </td>
                     <td> <img width="80" height="100" src="<?php echo $user['img_1']; ?>" alt=""></td>
                     <!-- <td style="padding-left:75px;"></td> -->
                     <!-- <td><a class="btn btn-info" href="ownerdetails.php?id=<?php echo $user['id']; ?>" >Accept</a> </td>
                     <td><a class="btn btn-danger" href="ownerdetails.php?id=<?php echo $user['id']; ?>" >Delete</a> </td> -->
                     <td>
-                      <form class="" action="allpost.php" method="post">
+                      <form class="" action="resPost.php" method="post">
 							<input type="hidden" name="id_post" value="<?php echo $user['id_post']; ?>">
-                        <input class="btn btn-info" type="submit" name="acc" value="Accept">
+                        <input class="btn btn-info" type="submit" name="acc" value="Restore">
                       </form>
                     </td>
                     <td>
-                      <form class="" action="allpost.php" method="post">
+                      <form class="" action="resPost.php" method="post">
 							<input type="hidden" name="id_del" value="<?php echo $user['id_post']; ?>">
-                        <input class="btn btn-danger" type="submit" name="del" value="Decline">
+                        <input class="btn btn-danger" type="submit" name="del" value="Delete">
                       </form>
                     </td>
                 </tr>
