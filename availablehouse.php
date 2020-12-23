@@ -15,19 +15,20 @@
 
 <?php
    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['search_house'])) {
-     $arr = explode('-',$_POST['rental_value']);
-     $range1 = substr($arr[0],1);
-     $range2 = substr($arr[1],2);
+     //$arr = explode('-',$_POST['rental_value']);
+     //$range1 = substr($arr[0],1);
+     //$range2 = substr($arr[1],2);
 
-     $data = $home->searchHome($range1,$range2,$_POST);
+     //$data = $home->searchHome($range1,$range2,$_POST);
+     $data = $home->searchHome1($_POST);
    }
 
    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search_cover'])) {
-     $arr = explode('-',$_GET['rental_value']);
-     $range1 = substr($arr[0],1);
-     $range2 = substr($arr[1],2);
+     //$arr = explode('-',$_GET['rental_value']);
+     //$range1 = substr($arr[0],1);
+     //$range2 = substr($arr[1],2);
 
-     $data = $home->searchHome($range1,$range2,$_GET);
+     //$data = $home->searchHome($range1,$range2,$_GET);
    }
 ?>
 <div class="hero-wrap" style="background-image: url('images/background_1.jpg');">
@@ -48,15 +49,6 @@
             <h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span> Search House</h2>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="search-property">
               <div class="row">
-                <div class="col-md align-items-end">
-                  <div class="form-group">
-                    <label for="#">Keyword</label>
-                    <div class="form-field">
-                      <div class="icon"><span class="icon-pencil"></span></div>
-                      <input type="text" class="form-control" placeholder="Keyword">
-                    </div>
-                  </div>
-                </div>
                 <div class="col-md align-items-end">
                   <div class="form-group">
                     <label for="#">Address</label>
@@ -98,111 +90,18 @@
                   </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-md align-items-end">
                   <div class="form-group">
-                    <label for="#">Min Bedrooms</label>
+                    <label for="#">Price range</label>
                     <div class="form-field">
-                      <div class="select-wrap">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="bedroom" id="" class="form-control">
-                          <option value="" selected disabled>Bedroom</option>
-                          <option value="">1</option>
-                          <option value="">2</option>
-                          <option value="">3</option>
-                        </select>
-                      </div>
+                      <!--
+                      <input type="range" min="0" max="1000000" id="input_range" name="rental_value" readonly style="border:0; color:#f6931f; font-weight:bold;">-->
                     </div>
                   </div>
-                </div>
-                <div class="col-md align-items-end">
-                  <div class="form-group">
-                    <label for="#">Min Bathroom</label>
-                    <div class="form-field">
-                      <div class="select-wrap">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="bathroom" id="" class="form-control">
-                          <option value="" selected disabled>Bathroom</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md align-items-end">
-                  <div class="form-group">
-                    <label for="#">Min Price</label>
-                    <div class="form-field">
-                      <div class="select-wrap">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="min_price" id="" class="form-control">
-                          <option value="" selected disabled="">Min Price</option>
-                          <option value="">$1,000</option>
-                          <option value="">$5,000</option>
-                          <option value="">$10,000</option>
-                          <option value="">$50,000</option>
-                          <option value="">$100,000</option>
-                          <option value="">$200,000</option>
-                          <option value="">$300,000</option>
-                          <option value="">$400,000</option>
-                          <option value="">$500,000</option>
-                          <option value="">$600,000</option>
-                          <option value="">$700,000</option>
-                          <option value="">$800,000</option>
-                          <option value="">$900,000</option>
-                          <option value="">10,000,000 VND</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md align-items-end">
-                  <div class="form-group">
-                    <label for="#">Max Price</label>
-                    <div class="form-field">
-                      <div class="select-wrap">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="max_price" id="" class="form-control">
-                          <option value="" selected disabled>Max Price</option>
-                          <option value="">$5,000</option>
-                          <option value="">$10,000</option>
-                          <option value="">$50,000</option>
-                          <option value="">$100,000</option>
-                          <option value="">$200,000</option>
-                          <option value="">$300,000</option>
-                          <option value="">$400,000</option>
-                          <option value="">$500,000</option>
-                          <option value="">$600,000</option>
-                          <option value="">$700,000</option>
-                          <option value="">$800,000</option>
-                          <option value="">$900,000</option>
-                          <option value="">$1,000,000</option>
-                          <option value="">$2,000,000</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md align-items-end">
-                  <div class="form-group">
-                    <label for="#">Min Area <span>(m2)</span></label>
-                    <div class="form-field">
-                      <div class="icon"><span class="icon-pencil"></span></div>
-                      <input type="text" class="form-control" placeholder="Min Area">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md align-items-end">
-                  <div class="form-group">
-                    <label for="#">Max Area <span>(m2)</span></label>
-                    <div class="form-field">
-                      <div class="icon"><span class="icon-pencil"></span></div>
-                      <input type="text" class="form-control" placeholder="Max Area">
-                    </div>
-                  </div>
-                </div>
+                </div> 
+              </div>
+              </div>
                 <div class="col-md align-self-end">
                   <div class="form-group">
                     <div class="form-field">
@@ -216,54 +115,6 @@
         </div>
       </div>
 </section>
-
-<!--
-<div class="available_page_area">
-  <div class="available_page_main container">
-    <div class="search_house">
-      <div class="search_house_inner card">
-        <div class="well search_card card-body">
-          <form class="search_house_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <input type="text" name="address" class="form-control" value="<?php if(isset($_POST['address'])){
-              echo $_POST['address'];
-            } ?>" placeholder="Address">
-            <select class="form-control" style="background-color:lavender;" name="house_type">
-              <option value="" selected disabled>Rent Type</option>
-              <option value="Family"
-              <?php if(isset($_POST['house_type']) && $_POST['house_type']=='Family'){
-                echo "selected";
-              } ?>
-              >Family</option>
-              <option value="Bachelor"
-              <?php if(isset($_POST['house_type']) && $_POST['house_type']=='Bachelor'){
-                echo "selected";
-              } ?>
-              >Bachelor</option>
-              <option value="Sublet"
-              <?php if(isset($_POST['house_type']) && $_POST['house_type']=='Sublet'){
-                echo "selected";
-              } ?>
-              >Sub-Let</option>
-              <option value="Mess/Hostel"
-              <?php if(isset($_POST['house_type']) && $_POST['house_type']=='Mess/Hostel'){
-                echo "selected";
-              } ?>
-              >Hostel/Mess</option>
-            </select>
-            <div id="range">
-              <label for="input_range">Price range:</label>
-              <input type="text" id="input_range" name="rental_value" readonly style="border:0; color:#f6931f; font-weight:bold;">
-              <div id="main_range" class="myrange" title="Tap left or right button to set more precise value."></div>
-            </div>
-
-            <input type="submit" name="search_house" class="btn btn-info" value="Search house">
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div class="all_houses row">
--->
 
 <section class="ftco-section bg-light">
   <div class="container">

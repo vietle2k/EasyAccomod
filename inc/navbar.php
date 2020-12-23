@@ -28,7 +28,7 @@
                 <?php
               }
               if(Session::get('login') == true && (Session::get('user') == 'renter')) { ?>
-                  <li class="nav-item cta cta-colored"><a class="nav-link"><span class="icon-user"></span> Profile </a></li>
+                  <li class="nav-item cta cta-colored"><a href="tenant_profile.php?tenant_id=<?php echo Session::get('user_id'); ?>" class="nav-link"><span class="icon-user"></span> Profile </a></li>
                   <li class="nav-item cta"><a class="nav-link" href="?logout=yes"><span></span> Logout </a></li>
                 <?php
               }
@@ -37,7 +37,7 @@
                 <li class="nav-item cta cta-colored"><a href="user_register.php" class="nav-link"><span class="icon-pencil"></span> Register</a></li>
                 <?php
               } 
-              else if (Session::get('login') == false && isset($_GET['logout']) && $_GET['logout']=='no') { ?>
+              else if ((Session::get('login') == false && isset($_GET['logout']) && $_GET['logout']=='no') && (Session::get('login') == true && (Session::get('user') != 'owner' || Session::get('user') != 'renter') )) { ?>
                 <?php Session::sessionDestroy(); ?>
                 <li class="nav-item cta"><a href="user_login.php" class="nav-link ml-lg-2"><span class="icon-user"></span> Sign-In</a></li>
                 <li class="nav-item cta cta-colored"><a href="user_register.php" class="nav-link"><span class="icon-pencil"></span> Register</a></li>

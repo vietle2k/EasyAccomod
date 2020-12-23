@@ -28,7 +28,7 @@
       return $result;
     }
 
-    public function gethomeDetailsbyRenter($id)
+    public function gethomeDetailsbyTenant($id)
     {
       $sql = 'select * from post where renter_id=:id order by id_post DESC';
       $query = $this->db->link->prepare($sql);
@@ -44,6 +44,40 @@
       $query->bindParam('id',$id,PDO::PARAM_INT);
       $query->execute();
       $result = $query->fetch(PDO::FETCH_ASSOC);
+      return $result;
+    }
+
+    public function searchHome1($data) 
+    {
+      $active = 'active';
+      $sql = "select * FROM post WHERE active_status=:active_status";
+      $address = 0;
+      $house_type = 0;
+
+      if (isset($data['address']) && (strlen($data['address']) > 0)) {
+        $sql = $sql.' and address = :address';
+        $address = 1;
+      }
+      if (isset($data['house_type'])) {
+        $sql = $sql.' and house_type = :house_type';
+        $house_type = 1;
+      }
+      $query = $this->db->link->prepare($sql);
+      //$query->bindParam(':min', $min, PDO::PARAM_INT);
+      //$query->bindParam(':max', $max, PDO::PARAM_INT);
+      if ($address == 1) {
+        $query->bindParam(':address', $data['address'], PDO::PARAM_STR);
+      } else {
+        echo "<p>address fail</p>";
+      }
+      if ($house_type == 1) {
+        $query->bindParam(':house_type', $data['house_type'], PDO::PARAM_STR);
+      } else {
+        echo "<p>house type fail</p>";
+      }
+      $query->bindValue(':active_status',$active);
+      $query->execute();
+      $result = $query->fetchAll();
       return $result;
     }
 
@@ -196,6 +230,7 @@
               $query->bindParam('pic',$uploaded_image,PDO::PARAM_STR);
               $query->bindParam('id',$id,PDO::PARAM_INT);
               $query->execute();
+              echo "Update Successful!"; 
           }
       }
       else{
@@ -211,6 +246,7 @@
         $query->bindParam('description',$data['description'],PDO::PARAM_STR);
         $query->bindParam('id',$id,PDO::PARAM_INT);
         $query->execute();
+        echo "Update Successful!"; 
       }
 
 
