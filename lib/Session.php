@@ -37,7 +37,7 @@
       session_destroy();
       Header('Location:index.php');
     }
-    public function sessionDestroyadmin()
+    public static function sessionDestroyadmin()
     {
       session_destroy();
       Header('Location:index.php');

@@ -68,7 +68,7 @@
                     }
 
                     ?>
-                    <td> <img width="80" height="100" src="<?php echo $user['img_1']; ?>" alt=""></td>
+                    <td> <img width="80" height="100" src="../<?php echo $user['img_1']; ?>" alt=""></td>
                     <!-- <td style="padding-left:75px;"></td> -->
                     <!-- <td><a class="btn btn-info" href="ownerdetails.php?id=<?php echo $user['id']; ?>" >Accept</a> </td>
                     <td><a class="btn btn-danger" href="ownerdetails.php?id=<?php echo $user['id']; ?>" >Delete</a> </td> -->

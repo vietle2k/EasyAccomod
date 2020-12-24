@@ -23,13 +23,13 @@
      $data = $home->searchHome1($_POST);
    }
 
-   if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search_cover'])) {
-     //$arr = explode('-',$_GET['rental_value']);
-     //$range1 = substr($arr[0],1);
-     //$range2 = substr($arr[1],2);
+  //  if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search_cover'])) {
+  //    //$arr = explode('-',$_GET['rental_value']);
+  //    //$range1 = substr($arr[0],1);
+  //    //$range2 = substr($arr[1],2);
 
-     //$data = $home->searchHome($range1,$range2,$_GET);
-   }
+  //    //$data = $home->searchHome($range1,$range2,$_GET);
+  //  }
 ?>
 <div class="hero-wrap" style="background-image: url('images/background_1.jpg');">
       <div class="overlay"></div>
@@ -55,7 +55,7 @@
                     <div class="form-field">
                       <div class="icon"><span class="icon-pencil"></span></div>
                       <input type="text" class="form-control" name="address" placeholder="Address" value="<?php if(isset($_POST['address'])){
-                          echo $_POST['address'];
+                        echo $_POST['address'];
                       } ?>">
                     </div>
                   </div>
@@ -91,15 +91,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md align-items-end">
-                  <div class="form-group">
-                    <!--<label for="#">Price range</label>-->
-                    <div class="form-field">
-                      <!--
-                      <input type="range" min="0" max="1000000" id="input_range" name="rental_value" readonly style="border:0; color:#f6931f; font-weight:bold;">-->
-                    </div>
-                  </div>
-                </div> 
+                
               </div>
               </div>
                 <div class="col-md align-self-end">
@@ -121,7 +113,7 @@
     <div class="row">
       <?php 
         foreach ($data as $value) { ?>
-          <div class="col-md-4 ftco-animate" style="border">
+          <div class="col-md-4 ftco-animate" >
             <div class="properties">
               <?php 
                 if (!$value['img_1']) {

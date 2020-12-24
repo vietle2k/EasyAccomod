@@ -50,7 +50,7 @@
                     <td><?php  echo 'Offline' ?></td>
                     <td> <a class="btn btn-info" href="ownerdetails.php?id=<?php echo $user['id']; ?>" >view</a> </td>
                     <td>
-                    <td><a href="Chat.php"> Start Chat</a></button>
+                    <td><a href="Chat.php?id=<?php echo $user['id']; ?>"> Start Chat</a></button>
                   </td>
                     
                 </tr>

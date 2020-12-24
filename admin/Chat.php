@@ -124,7 +124,7 @@ function loadLog(){
 		  	},
 		});
 }
-setInterval (loadLog, 2500);	
+setInterval (loadLog, 1000);	
 </script>
 </body>
 </html>

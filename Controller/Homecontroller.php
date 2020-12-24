@@ -73,7 +73,71 @@
       if ($house_type == 1) {
         $query->bindParam(':house_type', $data['house_type'], PDO::PARAM_STR);
       } else {
-        echo "<p>ko co data</p>";
+        //echo "<p>ko co data</p>";
+      }
+      $query->bindValue(':active_status',$active);
+      $query->execute();
+      $result = $query->fetchAll();
+      return $result;
+    }
+
+    public function searchHome2($data) 
+    {
+      $active = 'active';
+      $sql = "select * FROM post WHERE active_status=:active_status";
+      $address = 0;
+      $house_type = 0;
+      $min_price = 0;
+      $max_price = 0;
+
+      if (isset($data['address']) && (strlen($data['address']) > 0)) {
+        $sql = $sql.' and address = :address';
+        $address = 1;
+      }
+      if (isset($data['house_type'])) {
+        $sql = $sql.' and house_type = :house_type';
+        $house_type = 1;
+      }
+      if (isset($data['min_price'])) {
+        $sql = $sql. ' and price BETWEEN 0 and 1800000';
+        $min_price = 1;
+        echo "<p>ton tai min</p>";        
+      }
+      if (isset($data['max_price']) && !isset($data['min_price'])) {
+        $sql = $sql. ' and price <= :max_price';
+        $max_price = 1;
+      }
+      if (isset($data['max_price']) && isset($data['min_price'])) {
+        $max = $data['max_price'];
+        $min = $data['min_price'];
+        if ($min < $max) {
+          $sql = $sql. ' and price between :min_price and :max_price';
+          $min_price = 1;
+          $max_price = 1;
+        }
+      }
+      $query = $this->db->link->prepare($sql);
+      //$query->bindParam(':min', $min, PDO::PARAM_INT);
+      //$query->bindParam(':max', $max, PDO::PARAM_INT);
+      if ($address == 1) {
+        $query->bindParam(':address', $data['address'], PDO::PARAM_STR);
+      } else {
+        //echo "<p>address fail</p>";
+      }
+      if ($house_type == 1) {
+        $query->bindParam(':house_type', $data['house_type'], PDO::PARAM_STR);
+      } else {
+        //echo "<p>ko co data</p>";
+      }
+      if ($min_price == 1) {
+        //$query->bindParam(':min_price', $data['min_price'], PDO::PARAM_INT);
+        //$query->bindValue(':min_price',$data['min_price']);
+        echo "<p>min</p>";
+      } else {
+        
+      }
+      if ($max_price == 1) {
+        $query->bindParam(':max_price', $data['max_price'], PDO::PARAM_INT);
       }
       $query->bindValue(':active_status',$active);
       $query->execute();
