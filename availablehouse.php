@@ -67,20 +67,20 @@
                       <div class="select-wrap">
                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                         <select name="house_type" id="" class="form-control">
-                          <option value="" selected disabled>Type</option>
-                          <option value="1" <?php if(isset($_POST['house_type']) && $_POST['house_type']=='1'){
+                          <option value="" selected>Type</option>
+                          <option value="phong_tro" <?php if(isset($_POST['house_type']) && $_POST['house_type']=='phong_tro'){
                               echo "selected";
                           } ?>
                           >Phong Tro</option>
-                          <option value="2" <?php if(isset($_POST['house_type']) && $_POST['house_type']=='2'){
+                          <option value="chung_cu_mini" <?php if(isset($_POST['house_type']) && $_POST['house_type']=='chung_cu_mini'){
                               echo "selected";
                           } ?>
                           >Chung Cu Mini</option>
-                          <option value="3" <?php if(isset($_POST['house_type']) && $_POST['house_type']=='3'){
+                          <option value="chung_cu_nguyen_can" <?php if(isset($_POST['house_type']) && $_POST['house_type']=='chung_cu_nguyen_can'){
                               echo "selected";
                           } ?>
                           >Chung Cu Nguyen Can</option>
-                          <option value="4" <?php if(isset($_POST['house_type']) && $_POST['house_type']=='4'){
+                          <option value="nha_nguyen_can" <?php if(isset($_POST['house_type']) && $_POST['house_type']=='nha_nguyen_can'){
                               echo "selected";
                           } ?>
                           >Nha Nguyen Can</option>
@@ -93,7 +93,7 @@
               <div class="row">
                 <div class="col-md align-items-end">
                   <div class="form-group">
-                    <label for="#">Price range</label>
+                    <!--<label for="#">Price range</label>-->
                     <div class="form-field">
                       <!--
                       <input type="range" min="0" max="1000000" id="input_range" name="rental_value" readonly style="border:0; color:#f6931f; font-weight:bold;">-->

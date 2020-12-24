@@ -40,6 +40,10 @@
       echo "<p class='alert alert-danger'>Email Format is Invalid!</p>";
       $msg = null;
     }
+    else if((isset($msg)) && ($msg=='verified')){
+      echo "<p class='alert alert-success'>Your Account will be verified soon!</p>";
+      $msg = null;
+    }
   ?>
   <?php 
     include 'inc/register_cover.php';

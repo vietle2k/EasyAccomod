@@ -68,12 +68,12 @@
       if ($address == 1) {
         $query->bindParam(':address', $data['address'], PDO::PARAM_STR);
       } else {
-        echo "<p>address fail</p>";
+        //echo "<p>address fail</p>";
       }
       if ($house_type == 1) {
         $query->bindParam(':house_type', $data['house_type'], PDO::PARAM_STR);
       } else {
-        echo "<p>house type fail</p>";
+        echo "<p>ko co data</p>";
       }
       $query->bindValue(':active_status',$active);
       $query->execute();

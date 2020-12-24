@@ -27,9 +27,16 @@
             $query->bindValue(':password',$password);
             $query->execute();
             $result = $query->fetch(PDO::FETCH_OBJ);
-
-            $type = $result->user_type;
-            $is_active = $result->isActive;
+            
+            $type = '';
+            $is_active = '0';
+            if ($result) {
+              $type = $result->user_type;
+              $is_active = $result->isActive; 
+            } else {
+              return 'nouser';
+            }
+            
 
             if($result && ($type == 'renter' || ($type == 'owner' && $is_active == '1') )){
               Session::set('login',true);

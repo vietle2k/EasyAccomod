@@ -67,7 +67,7 @@
           <div class="col-md-12 Properties-single mt-4 mb-5 ftco-animate">
             <h2><?php echo $house['address']; ?></h2>
             <p class="rate mb-4">
-              <span class="loc"><i class="icon-user"></i>Owner Name: <?php echo $house['owner_id']; ?></span>
+              <span class="loc"><i class="icon-user"></i>Owner Name: <!--<?php echo $house['owner_id']; ?>--></span>
             </p>
             <div class="d-md-flex mt-5 mb-5">
               <ul>
@@ -222,25 +222,52 @@
             </div>
           <?php } 
         ?>
+        <?php
+          if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
+            $req = $home->sendrequest($houseid,$ownerid);
+          }
+
+          if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cancel'])) {
+            $cancel = $home->cancelrequest($houseid,$ownerid);
+          }
+          $check = $home->checkrequest($houseid);
+        ?>
+        <?php 
+          if(Session::get('user') == 'renter'){ ?>
+            <div class="single_action">
+              <form class="" action="<?php echo $_SERVER['PHP_SELF'].'?house_id='.$house['id_post'];?>" method="post">
+                <?php
+                if ($check=='no') { ?>
+                  <input type="submit" class="btn btn-primary" name="request" value="Request for rent">
+                <?php }
+                else if($check=='yes') { ?>
+                  <input type="submit" class="btn btn-danger" name="cancel" value="Cancel Booked">
+                <?php }
+                else if($check=='booked') { ?>
+                  <p class="btn btn-primary">Booked by You</p>
+                <?php } 
+                ?>
+              </form>
+            </div>
+
+            <div class="single_action">
+              <a class="btn btn-info" href="owner_profile.php?owner_id=<?php echo $house['owner_id']; ?>">Contact to owner</a>
+            </div>
+          <?php } 
+          else if(!Session::get('user') == 'owner'){ ?>
+            <div class="single_action">
+              <a class="btn btn-info" onclick="loginpage(<?php echo $house['id']; ?>);">Contact to owner</a>
+            </div>
+          <?php } 
+        ?>
       </div> 
     </div>
   </div>
 </section>
 
-<?php
-  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request'])) {
-    $req = $home->sendrequest($houseid,$ownerid);
-    echo "<p>request roi!</p>";
-  }
-
-  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cancel'])) {
-    $cancel = $home->cancelrequest($houseid,$ownerid);
-  }
-  $check = $home->checkrequest($houseid);
-?>
-
-
-<?php if(Session::get('user') == 'renter'){ ?>
+<!--
+<?php 
+  if(Session::get('user') == 'renter'){ ?>
           <div class="single_action">
             <form class="" action="<?php echo $_SERVER['PHP_SELF'].'?house_id='.$house['id_post'];?>" method="post">
               <?php
@@ -260,12 +287,13 @@
           <div class="single_action">
             <a class="btn btn-info" href="owner_profile.php?owner_id=<?php echo $house['owner_id']; ?>">Contact to owner</a>
           </div>
-<?php } else if(!Session::get('user') == 'owner'){ ?>
-
-  <div class="single_action">
-    <a class="btn btn-info" onclick="loginpage(<?php echo $house['id']; ?>);">Contact to owner</a>
-  </div>
-<?php } ?>
+  <?php } 
+  else if(!Session::get('user') == 'owner'){ ?>
+    <div class="single_action">
+      <a class="btn btn-info" onclick="loginpage(<?php echo $house['id']; ?>);">Contact to owner</a>
+    </div>
+  <?php } 
+?>-->
 <script>
   function loginpage($id){
     <?php

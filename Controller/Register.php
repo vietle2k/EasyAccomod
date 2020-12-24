@@ -34,7 +34,7 @@
           else{
             $password = md5($password);
             $isActive = '0';
-            if ($user === 'renter') {
+            if ($user == 'renter') {
               $isActive = '1';
             }
 
@@ -56,7 +56,14 @@
               $query->execute();
               $result = $query->fetch(PDO::FETCH_OBJ);
 
-              if($result){
+              $type = '';
+              if ($result) {
+                $type = $result->user_type;
+              } else {
+                return 'nouser';
+              }
+
+              if($result && $type == 'renter'){
                 Session::set('login',true);
                 Session::set('user',$result->user_type);
                 Session::set('user_id',$result->id);
@@ -64,6 +71,9 @@
                 Session::set('fullname',$result->fullname);
                 Header('Location:index.php');
                 exit();
+              }
+              else if($result && $type =='owner') {
+                return 'verified';
               }
               else{
                 return 'nouser';
