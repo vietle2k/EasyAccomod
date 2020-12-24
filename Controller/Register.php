@@ -33,14 +33,19 @@
           }
           else{
             $password = md5($password);
+            $isActive = '0';
+            if ($user === 'renter') {
+              $isActive = '1';
+            }
 
-            $sql = "INSERT INTO user(user_type,fullname,gender,email,password) VALUES (:user,:fullname,:gender,:email,:password)";
+            $sql = "INSERT INTO user(user_type,fullname,gender,email,password,isActive) VALUES (:user,:fullname,:gender,:email,:password,:isActive)";
             $query = $this->db->link->prepare($sql);
             $query->bindValue(':user',$user);
             $query->bindValue(':fullname',$fullname);
             $query->bindValue(':gender',$gender);
             $query->bindValue(':email',$email);
             $query->bindValue(':password',$password);
+            $query->bindValue(':isActive',$isActive);
             $insert = $query->execute();
 
             if($insert){

@@ -41,6 +41,10 @@
         echo "<p class='alert alert-danger'>Email Format is Invalid!</p>";
         $msg = null;
       }
+      else if((isset($msg)) && ($msg=='noactive')){
+        echo "<p class='alert alert-danger'>Your Account is being verified</p>";
+        $msg = null;
+      }
 ?>
     <div style="padding-top: 0rem; padding-bottom: 0rem; position: relative; z-index: 2">
       <div class="container">

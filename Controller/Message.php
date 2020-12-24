@@ -10,10 +10,11 @@
 
     public function getMessage($id)
     {
-      $sql = "select * from notification where to_id=:id and read_message=:read_message order by id DESC";
+      $sql = "select * from notification where to_id=:id and read_message=:read_message";
+      //$sql = "select * from notification where to_id=:id";
       $query = $this->db->link->prepare($sql);
       $query->bindValue(':id',$id);
-      $query->bindValue(':read_message',0);
+      $query->bindValue(':read_message','no');
       $query->execute();
       $result = $query->fetchAll(PDO::FETCH_ASSOC);
       return $result;
@@ -22,7 +23,7 @@
     {
       $sql = "update notification set read_message=:read_message where to_id=:to_id and id=:id";
       $query = $this->db->link->prepare($sql);
-      $query->bindValue(':read_message',1);
+      $query->bindValue(':read_message','yes');
       $query->bindValue(':to_id',$id);
       $query->bindValue(':id',$msgid);
       $query->execute();

@@ -28,7 +28,10 @@
             $query->execute();
             $result = $query->fetch(PDO::FETCH_OBJ);
 
-            if($result){
+            $type = $result->user_type;
+            $is_active = $result->isActive;
+
+            if($result && ($type == 'renter' || ($type == 'owner' && $is_active == '1') )){
               Session::set('login',true);
               Session::set('user',$result->user_type);
               Session::set('user_id',$result->id);
@@ -42,6 +45,9 @@
                 //Header('Location:index.php');
                 echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
               }
+            }
+            else if($result && $type == 'owner' && $is_active == '0'){
+              return 'noactive';
             }
             else{
               return 'nouser';

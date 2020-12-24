@@ -46,13 +46,10 @@
               </ul> 
               <?php
                 if(Session::get('user_id') == $id){
-                ?>
-                  <ul class="extra_nav">
-                    <li> 
+                ?>                    
                       <a class="btn btn-primary" href="editprofile.php?id=<?php echo Session::get('user_id'); ?>">
                       Edit Profile</a> 
-                    </li>
-                  </ul>
+
                 <?php } 
               ?>
             </div>

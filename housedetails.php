@@ -157,13 +157,16 @@
                   $tenant = $home->getUser($house['renter_id']);
                 ?>
                 <div class="dropdown">
-                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="booked" aria-haspopup="true" aria-expanded="false">
                     Booked by <a href="tenant_profile.php?tenant_id=<?php echo $tenant->id; ?>" target="_blank" ><?php echo $tenant->fullname; ?></a>
                   </button>
-                  <div style="left:45px !important;" class="dropdown-menu">
+                  <div class="dropdown-menu" aria-labelledby="booked">
+                    <!--
                     <form class="dropdown-item" action="<?php echo $_SERVER['PHP_SELF'].'?house_id='.$house['id_post'];?>" method="post">
                       <input style="cursor:pointer;" type="submit" class="btn btn-default" name="free_home" value="Free">
-                    </form>
+                    </form> -->
+                    <a class="dropdown-item" action="<?php echo $_SERVER['PHP_SELF'].'?house_id='.$house['id_post'];?>" method="post"><input style="cursor:pointer;" type="submit" class="btn btn-default" name="free_home" value="Free"></a>
+                    <a class="dropdown-item">abcd</a>
                   </div>
                 </div>
                 <?php }
