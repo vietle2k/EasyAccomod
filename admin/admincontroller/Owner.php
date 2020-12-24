@@ -15,7 +15,7 @@ class Owner extends Admincontroller
     // $query = $this->db->link->prepare($sql);
     // $query->bindValue(':user',$usertype);
     // $query->execute();
-    $sql = "SELECT user.* from user where user_type = :user";
+    $sql = "SELECT user.* from user where user_type = :user and isActive = 1";
     $query = $this->db->link->prepare($sql);
     $query->bindValue(':user',$usertype);
     $query->execute();
@@ -57,6 +57,16 @@ class Owner extends Admincontroller
   public function deleteOwner($id)
   {
     $sql = "delete from user where id= :id";
+    $query = $this->db->link->prepare($sql);
+    $query->bindValue(':id',$id);
+    $query->execute();
+    // Header('Location:allowner.php');
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+
+  public function inactiveOwner($id)
+  {
+    $sql = "UPDATE `user` SET `isActive` = '0' WHERE `user`.`id` = :id";
     $query = $this->db->link->prepare($sql);
     $query->bindValue(':id',$id);
     $query->execute();

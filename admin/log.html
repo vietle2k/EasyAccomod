@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.</title>
+</head>
+<body>
+    <div id="chatbox"><?php
+        if(file_exists("log.html") && filesize("log.html") > 0){
+            $handle = fopen("log.html", "r");
+            $contents = fread($handle, filesize("log.html"));
+            fclose($handle);
+             
+            echo $contents;
+        }
+        ?></div>
+</body>
+</html><div class='msgln'>(1:23 AM) <b>vutt</b>: sư<br></div><div class='msgln'>(1:23 AM) <b>vutt</b>: de<br></div>

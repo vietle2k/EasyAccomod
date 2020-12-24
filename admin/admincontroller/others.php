@@ -51,7 +51,7 @@
     public function countowner()
     {
       $type = 'owner';
-      $sql = "select count(*) as owner from user where user_type=:user";
+      $sql = "select count(*) as owner from user where user_type = :user AND isActive = 1";
       $query = $this->db->link->prepare($sql);
       $query->bindValue(':user',$type);
       $query->execute();
@@ -65,6 +65,17 @@
       $sql = "select count(*) as tenant from user where user_type=:user";
       $query = $this->db->link->prepare($sql);
       $query->bindValue(':user',$type);
+      $query->execute();
+      $result = $query->fetch(PDO::FETCH_ASSOC);
+      return $result;
+    }
+
+    public function countPost()
+    {
+      $type = 'active';
+      $sql = "select count(*) as post from post where active_status= :post";
+      $query = $this->db->link->prepare($sql);
+      $query->bindValue(':post',$type);
       $query->execute();
       $result = $query->fetch(PDO::FETCH_ASSOC);
       return $result;

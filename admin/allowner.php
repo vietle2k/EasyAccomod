@@ -13,7 +13,7 @@
   $owner = new Owner();
   $alluser = $owner->allowner();
   if (isset($_POST['delete'])) {
-    $owner->deleteOwner($_POST['delete']);
+    $owner->inactiveOwner($_POST['delete']);
   }
  ?>
 
@@ -29,7 +29,7 @@
                     <th>Gmail</th>
                     <!-- <th>Number of House</th> -->
                     <th>View</th>
-                    <th>Delete</th>
+                    <th>Inactive</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
                     <td>
                     <form class="" action="allowner.php" method="post">
 							          <input type="hidden" name="delete" value="<?php echo $user['id']; ?>">
-                        <input class="btn btn-danger" type="submit" name="del" value="Delete">
+                        <input class="btn btn-danger" type="submit" name="del" value="Inactive">
                       </form>
                     </td>
                 </tr>
